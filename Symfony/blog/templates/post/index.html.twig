@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post List{% endblock %}
+
+{% block body %}
+
+<div class="container" >
+   
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h1>The list of messages</h1>
+    <table class="table table-bordered table-hover mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Desc</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+           {% for pos in post%}
+            <tr>    
+                <th >{{pos.id}}</th>
+
+                <td>
+                    <a class="text-success" href="{{path('post.show',{id:pos.id})}}">{{ pos.title}}</a>
+                </td>
+
+                <td>{{pos.description}}</td>
+                <td>
+                    <a class="text-danger" href="{{path('post.delete',{id:pos.id})}}">Delete Post</a>
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

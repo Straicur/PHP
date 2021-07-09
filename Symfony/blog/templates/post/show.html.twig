@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Post {{ post.title }}{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>{{ post.title }}</h1>
+    <h3>Category: <em>{{post.category}}</em></h3>
+    </br>
+    <img class="rounded img-fluid" src='{{"/uploads/#{post.image }"}}'/>
+</div>
+{% endblock %}
